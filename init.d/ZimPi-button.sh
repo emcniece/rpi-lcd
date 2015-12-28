@@ -17,7 +17,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin
 case "$1" in
   start)
     #log_begin_msg "Initializing ZimPi Power Button"
-    bash /root/rpi-lcd/bash/_init.sh
+    bash /root/rpi-lcd/bash/_button.sh
     exit 0
     ;;
   *)
