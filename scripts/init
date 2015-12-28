@@ -1,0 +1,27 @@
+#!/usr/bin/python
+#
+# repeater
+#
+# Accepts up to 2 arguments and dumps the contents out
+# to the 2 lines on the attached LCD screen. This file
+# is referenced by the various scripts in this repo.
+#
+# Usage: python repeater stringLine1 stringLine2
+#
+##
+
+import sys
+sys.path.append("/root/rpi-lcd")
+import RPi_I2C_driver
+from time import *
+
+lcd = RPi_I2C_driver.lcd()
+lcd.backlight(1)
+lcd.printlcd( "ZimPi", 1)
+
+if len(sys.argv) > 1:
+  lcd.printlcd( "System Boot: " + sys.argv[1], 2)
+else:
+  lcd.printlcd( "System Boot", 2)
+
+sleep(0.005)

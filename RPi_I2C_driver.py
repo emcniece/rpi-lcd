@@ -151,6 +151,10 @@ class lcd:
       for char in string:
          self.lcd_write(ord(char), Rs)
 
+   # lcd_display_string alias
+   def printlcd(self, string, line):
+      self.lcd_display_string(string, line)
+
    # clear lcd and set to home
    def lcd_clear(self):
       self.lcd_write(LCD_CLEARDISPLAY)

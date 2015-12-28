@@ -1,0 +1,26 @@
+#!/usr/bin/python
+#
+# repeater
+#
+# Accepts up to 2 arguments and dumps the contents out
+# to the 2 lines on the attached LCD screen. This file
+# is referenced by the various scripts in this repo.
+#
+# Usage: python repeater stringLine1 stringLine2
+#
+##
+
+import sys
+sys.path.append("/root/rpi-lcd")
+import RPi_I2C_driver
+from time import *
+
+lcd = RPi_I2C_driver.lcd()
+
+if len(sys.argv) > 1:
+  lcd.lcd_display_string( sys.argv[1], 1)
+
+if len(sys.argv) > 2:
+  lcd.lcd_display_string( sys.argv[2], 2)
+
+sleep(0.005)
