@@ -7,6 +7,12 @@
 import RPi.GPIO as GPIO
 import os
 
+import sys
+sys.path.append("/root/rpi-lcd")
+import RPi_I2C_driver
+from time import *
+lcd = RPi_I2C_driver.lcd()
+
 gpio_pin_number=7
 #Replace YOUR_CHOSEN_GPIO_NUMBER_HERE with the GPIO pin number you wish to use
 #Make sure you know which rapsberry pi revision you are using first
@@ -25,6 +31,11 @@ try:
     GPIO.wait_for_edge(gpio_pin_number, GPIO.FALLING)
     #Use falling edge detection to see if pin is pulled 
     #low to avoid repeated polling
+
+    lcd.backlight(1)
+    lcd.printlcd( "ZimPi", 1)
+    lcd.printlcd( "Shutdown", 2)
+
     os.system("sudo shutdown -h now")
     #Send command to system to shutdown
 except:

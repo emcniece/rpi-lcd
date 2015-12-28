@@ -1,0 +1,23 @@
+#!/bin/bash
+
+printf "ZimPi Installer: starting!\n\n"
+
+curDir=$(pwd)
+if [ "$curDir" != "/root/rpi-lcd" ]; then
+  printf "ERROR: not at proper install directory! Please move this folder to /root/rpi-lcd \n\n"
+  exit 0;
+fi
+
+printf "Copying init.d scripts... \n"
+cp /root/rpi-lcd/init.d/ZimPi-LCD.sh /etc/init.d/ZimPi-LCD.sh
+cp /root/rpi-lcd/init.d/ZimPi-boot.sh /etc/init.d/ZimPi-boot.sh
+cp /root/rpi-lcd/init.d/ZimPi-button.sh /etc/init.d/ZimPi-button.sh
+printf "done.\n"
+
+printf "Installing startup hooks... \n"
+update-rc.d ZimPi-LCD.sh defaults
+update-rc.d ZimPi-boot.sh defaults
+update-rc.d ZimPi-button.sh defaults
+printf "done.\n"
+
+printf "\nInstall complete! \n\n"

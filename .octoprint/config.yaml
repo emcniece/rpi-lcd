@@ -1,0 +1,16 @@
+controls:
+- children:
+  - command: M1202
+    name: Main Lights On
+    type: parametric_command
+  - command: M1203
+    name: Main Lights Off
+    type: parametric_command
+  - command: M1200
+    name: Blue LED On
+    type: parametric_command
+  - command: M1201
+    name: Blue LED Off
+    type: parametric_command
+  name: Lights
+  type: section

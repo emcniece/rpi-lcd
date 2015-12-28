@@ -1,10 +1,12 @@
 #Raspberry Pi I2C LCD Library
 
 
-##Usage
+##Overview
 
-- Wire rPi/LCD as needed (I2C0, I2C1...)
-- Clone into local directory, cd
+- Wire rPi/LCD/button as needed (I2C0, I2C1...)
+    - See the [I2C diagram](/rpi_wiring_diagram.png) for LCD wires
+    - See the [GPIO diagram](/rpi_pinout.png) for all IO pins
+- Clone into /root/rpi-lcd, `cd /root/rpi-lcd`
 - Test I2C connectivity: `i2cdetect -y 1`
     - Table should dump with attached devices
 - `python example.py`
@@ -21,12 +23,10 @@ execution directory during startup bash scripts.
     - `sudo su -`
     - `cd`
     - `git clone https://github.com/emcniece/rpi-lcd.git`
-    - `chmod +x rpi-lcd/repeater`
-- edit ~/.bash_aliases
-    - `cd`
-    - `alias rpilcd="python /root/rpi-lcd/repeater"`
-    - `source .bash_aliases`
 - Install:
+    - `cd /root/rpi-lcd`
+    - `./install`
+- **Optional**: Manual Install:
     - `cp /root/rpi-lcd/init.d/ZimPi-LCD.sh /etc/init.d/ZimPi-LCD.sh`
     - `update-rc.d ZimPi-LCD.sh defaults`
     - `cp /root/rpi-lcd/init.d/ZimPi-boot.sh /etc/init.d/ZimPi-boot.sh`
@@ -37,5 +37,8 @@ execution directory during startup bash scripts.
 
 ##Power Button
 
-The power button (/init.d/ZimPi-button.sh) is designed to accommodate a momentary SPST on the far right GPIO pins. For the rPi B r2 this is GPIO7 - if you need this to be a different pin, edit this file before copying to `/etc/init.d/ZimPi-button.sh` and installing with update-rc.d.
+The power button ([/init.d/ZimPi-button.sh](/init.d/ZimPi-button.sh)) is designed to accommodate a momentary SPST on the far right GPIO pins. For the rPi B r2 this is GPIO7 - if you need this to be a different pin, edit this file before copying to `/etc/init.d/ZimPi-button.sh` and installing with update-rc.d.
 
+##Extra Octoprint Config
+
+The [.octoprint/config.yaml](/.octoprint/config.yaml) file has a few custom buttons that I found handy for toggling lights. Add this to the end of your `/home/pi/.octoprint/config.yaml` file if you want to use it!

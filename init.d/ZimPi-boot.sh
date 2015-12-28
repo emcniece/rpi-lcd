@@ -1,7 +1,7 @@
 #! /bin/sh
 ### BEGIN INIT INFO
 # Provides:          ZimPi-boot.sh
-# Required-Start:    $network
+# Required-Start:    hostname $local_fs
 # Required-Stop:     
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
